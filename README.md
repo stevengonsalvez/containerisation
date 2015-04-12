@@ -17,6 +17,6 @@ Steps
 
 Authors
 -------
-Steven Gonsalvez - steven.gonsalvez@gmail.com
-Rohan Reddy - rohan.reddyin@gmail.com
+*Steven Gonsalvez - steven.gonsalvez@gmail.com
+*Rohan Reddy - rohan.reddyin@gmail.com
 
