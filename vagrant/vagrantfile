@@ -1,7 +1,10 @@
 VAGRANTFILE_API_VERSION = "2"
 
-VM_NAME = "integrationserver"
-VM_IP= "192.168.56.100"
+VM_NAME_1 = "integrationserver"
+VM_IP_1= "192.168.56.100"
+
+VM_NAME_2 = "chef_server"
+VM_NAME_2 = "192.168.56.101"
 
 $script = <<SCRIPT
 echo "I am provisioning..."
@@ -12,23 +15,34 @@ yum install -y telnet
 yum install -y screen
 yum install -y vim
 yum install -y git
+sudo service iptables stop
 SCRIPT
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  config.vm.box = "CentOS-6.4-x86_64-v20130731"
-  config.vm.box_url = "http://developer.nrel.gov/downloads/vagrant-boxes/CentOS-6.4-x86_64-v20130731.box"
+  config.vm.box = "CentOS7.0 x86_64 Puppet and Docker"
+  config.vm.box_url = "https://dl.dropboxusercontent.com/s/srw2tqh58507wik/CentOS7.box"
 
   config.vm.define :vmbox do |vmbox|
-    vmbox.vm.hostname = VM_NAME
-    vmbox.vm.network :private_network, ip: VM_IP
+    vmbox.vm.hostname = VM_NAME_1
+    vmbox.vm.network :private_network, ip: VM_IP_1
 	vmbox.vm.provider :virtualbox do |v|
-      v.name = VM_NAME
+      v.name = VM_NAME_1
       v.customize ["modifyvm", :id, "--memory", 4096] 
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     end
   end
-
+  
+  config.vm.define :vmbox do |vmbox|
+    vmbox.vm.hostname = VM_NAME_2
+    vmbox.vm.network :private_network, ip: VM_IP_2
+	vmbox.vm.provider :virtualbox do |v|
+      v.name = VM_NAME_2
+      v.customize ["modifyvm", :id, "--memory", 4096] 
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+    end
+  end
+  
   config.vm.provision "shell", inline: $script
   
 end
