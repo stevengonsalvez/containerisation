@@ -32,7 +32,7 @@ sudo chown -R ${user_to_run_mule}:${user_to_run_mule} /opt/mule/
 #Replacing the Run as user to mule
 sudo sed -i -e 's|#RUN_AS_USER=|RUN_AS_USER='${user_to_run_mule}'|' /opt/mule/bin/mule
 
-sudo cp ./containerisation/vagrant/mule_init.sh /etc/init.d/mule
+sudo cp ./containerisation/init/mule_init.sh /etc/init.d/mule
 chmod 755 /etc/init.d/mule
 sudo chkconfig --add mule
 sudo service mule start

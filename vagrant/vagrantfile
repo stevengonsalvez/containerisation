@@ -13,7 +13,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       v.customize ["modifyvm", :id, "--memory", 2048] 
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     end
-	vmbox.vm.provision :shell, inline: 'echo B
+	vmbox.vm.provision :shell, path: "provision_i.sh"
   end
   
    config.vm.define :chef do |chef|
@@ -24,6 +24,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       c.customize ["modifyvm", :id, "--memory", 2048] 
       c.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     end
+	chef.vm.provision :shell, path: "provision_c.sh"
   end
 
   
