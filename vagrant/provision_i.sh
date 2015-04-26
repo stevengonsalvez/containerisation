@@ -1,6 +1,7 @@
 #All the parameters that are set
 user_to_run_mule="mule"
 mule_ce_location="https://repository-master.mulesoft.org/nexus/content/repositories/releases/org/mule/distributions/mule-standalone/3.6.1/mule-standalone-3.6.1.tar.gz"
+mule_ee_location=""
 
 
 #yum installs
