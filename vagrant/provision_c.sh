@@ -28,7 +28,7 @@ sudo service firewalld stop
 ##firewall-cmd --zone=public --add-service=http --permanent
 ##firewall-cmd --reload
 
-## adding jenkins repository
+## adding jenkins repository - jenkins runs on port 8080
 sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
 sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
 sudo yum install jenkins
@@ -60,7 +60,7 @@ sudo mkdir -p ${directory_for_nexus_store}
 sudo chown -R nexus:nexus /srv/nexus/main-repo
 sudo sed -i -e 's|nexus-work=${bundleBasedir}/../sonatype-work/nexus|nexus-work='${directory_for_nexus_store}'|' /usr/lib/nexus-oss/nexus/conf/nexus.properties
 
-# RUn Nexus as a service 
+# RUn Nexus as a service - runs on port 8081
 # copy init.d sctipt to proper place
 sudo cp /usr/lib/nexus-oss/nexus/bin/nexus /etc/init.d/nexus
 sudo chmod 777 /etc/init.d/nexus
