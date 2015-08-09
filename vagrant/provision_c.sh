@@ -6,7 +6,7 @@ directory_for_nexus_store="/srv/nexus/main-repo"
 
 
 #yum installs
-sudo yum install dos2unix
+sudo yum install -y dos2unix
 sudo yum install -y java-1.7.0-openjdk.x86_64
 sudo yum install -y mlocate
 sudo yum install -y telnet
@@ -31,7 +31,7 @@ sudo service firewalld stop
 ## adding jenkins repository - jenkins runs on port 8080
 sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
 sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
-sudo yum install jenkins
+sudo yum install -y jenkins
 
 sudo chkconfig jenkins on
 sudo service jenkins start/stop/restart
