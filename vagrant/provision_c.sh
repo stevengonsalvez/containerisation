@@ -13,6 +13,7 @@ sudo yum install -y telnet
 sudo yum install -y screen
 sudo yum install -y vim
 sudo yum install -y git
+sudo yum install -y wget
 sudo yum update -y
 
 ##cloning the repository for various files
